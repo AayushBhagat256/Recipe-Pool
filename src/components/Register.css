@@ -1,0 +1,42 @@
+#hello{
+    text-align: center;
+    background-color: chartreuse;
+}
+#registerinfo{
+    text-align: center;
+}
+#field{
+    width: 50%;
+    border: 2px solid black;
+}
+#message{
+    display: none;
+    color: red;
+}
+#registerinfo{
+    background-color: rgb(130, 133, 228);
+}
+#err1{
+    color: red;
+}
+#err2{
+    color: red;
+}
+#err3{
+    color: red;
+}
+#telerr{
+    color: red;
+}
+#telerr1{
+    color: red;
+}
+#telerr2{
+    color: red;
+}
+#errpass1{
+    color: red;
+}
+#errconpass{
+    color: red;
+}

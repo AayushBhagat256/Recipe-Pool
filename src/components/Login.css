@@ -1,0 +1,36 @@
+ #logininfo{
+    text-align: center;
+    margin: auto;
+}
+#gotoregister{
+    text-align: center;
+}
+#legend{
+    font-size: 20px;
+}
+fieldset{
+    width: 85%;
+    margin: auto;
+}
+.background{
+    background-color: rgb(79, 82, 169);
+    height: 90vh;
+}  
+/* .background{
+    color: white;
+    background-image: url('537582.jpg') ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+#email{
+    color: white;
+}
+#email TextField{
+    background-color: white;
+}
+#outlined-basic{
+    color: white;
+    background: transparent;
+   
+} */ 
