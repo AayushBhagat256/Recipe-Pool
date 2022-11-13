@@ -8,6 +8,7 @@ import { useState } from 'react';
 //import Genderdrop from './Genderdrop'
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import axios from 'axios';
 
 export default function SimpleContainer() {
   const [first,setFirst]=useState("")
@@ -110,6 +111,23 @@ export default function SimpleContainer() {
     alert("You have entered an invalid email address!")
     setValid(true)
     return (false)
+  }
+  const[dob,setDOB]=useState(def)
+  const handleDOB=(dobbb)=>{
+    setDOB(dobbb.target.value)
+  }
+  const handleAPI=()=>{
+    console.log("submit clicked")
+    axios.post('https://therecipepool.pythonanywhere.com/account/signup',{
+      firstname:first,
+      lastname:last,
+      email:emaill,
+      password:confrimpass,
+      DOB:dob,
+      phoneNumber:tel
+    })
+    .then(result=>{console.log(result)})
+    .catch(error=>{console.log(error)})
   }
   return (
     <div>
@@ -264,10 +282,10 @@ export default function SimpleContainer() {
               <br />
               <div id="yono">
                 <label htmlFor="">Enter Your Date of birth : </label>
-                <input type="date" name="" id="dob" max={k} onBlur={test} defaultValue={def}/>
+                <input type="date" name="" id="dob" max={k} onBlur={test} defaultValue={def} onChange={handleDOB} value={dob}/>
               </div>
               <div id="submit">
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Submit" onClick={handleAPI}/>
               </div>
             </form>
           </fieldset>

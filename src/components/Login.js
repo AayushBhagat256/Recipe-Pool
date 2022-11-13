@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import './Login.css'
+import axios from 'axios';
 
 export default function FullWidthTextField() {
   const [mail,setMail]=useState("")
@@ -29,7 +30,7 @@ export default function FullWidthTextField() {
   const validatelogin=(e)=>{
     e.preventDefault()
     console.log("validation starts")
-    if(mail.length===0||pass.length<8){
+    if(mail.length===0||pass.length<2){
       setError(true)
     }
     else{
@@ -41,6 +42,16 @@ export default function FullWidthTextField() {
     alert("You have entered an invalid email address!")
     setError(true)
     return (false)
+  }
+
+  // console.log({mail,pass})
+  const handleApi=()=>{
+    axios.post('http://therecipepool.pythonanywhere.com/account/login',{
+      email:mail,
+      password:pass
+    })
+    .then(result=>{console.log(result)})
+    .catch(error=>{console.log(error)})
   }
 
 
@@ -93,7 +104,7 @@ export default function FullWidthTextField() {
          <div id="errormsgpassword">{error && pass.length<=8?(<h4>plz enter password</h4>):("")}</div>
          <br />
          <div id="loginbtn">
-         <Button variant="contained" type='submit'>Login</Button>
+         <Button variant="contained" type='submit' onClick={handleApi}>Login</Button>
          </div>
          </div>
          <hr />
