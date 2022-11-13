@@ -118,16 +118,16 @@ export default function SimpleContainer() {
   }
   const handleAPI=()=>{
     console.log("submit clicked")
-    axios.post('https://therecipepool.pythonanywhere.com/account/signup',{
-      firstname:first,
-      lastname:last,
+    axios.post('https://therecipepool.pythonanywhere.com/account/signup/',{
+      //firstname:first,
+      //lastname:last,
       email:emaill,
       password:confrimpass,
-      DOB:dob,
-      phoneNumber:tel
+      //DOB:dob,
+      //phone_number:tel
     })
-    .then(result=>{console.log(result)})
-    .catch(error=>{console.log(error)})
+    .then((result)=>{console.log(result)})
+    .catch((error)=>{console.log(error)})
   }
   return (
     <div>

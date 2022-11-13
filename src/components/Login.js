@@ -46,7 +46,7 @@ export default function FullWidthTextField() {
 
   // console.log({mail,pass})
   const handleApi=()=>{
-    axios.post('http://therecipepool.pythonanywhere.com/account/login',{
+    axios.post('http://therecipepool.pythonanywhere.com/account/login/',{
       email:mail,
       password:pass
     })
