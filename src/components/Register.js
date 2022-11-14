@@ -118,16 +118,55 @@ export default function SimpleContainer() {
   }
   const handleAPI=()=>{
     console.log("submit clicked")
-    axios.post('https://therecipepool.pythonanywhere.com/account/signup/',{
-      //firstname:first,
-      //lastname:last,
-      email:emaill,
-      password:confrimpass,
-      //DOB:dob,
-      //phone_number:tel
-    })
-    .then((result)=>{console.log(result)})
-    .catch((error)=>{console.log(error)})
+    // axios.post('https://therecipepool.pythonanywhere.com/account/signup/',{
+    //   "firstname":first,
+    //   "lastname":last,
+    //   "email":emaill,
+    //   "password":confrimpass,
+    //   "DOB":dob,
+    //   "phone_number":tel
+    // })
+    // .then((result)=>{console.log(result)
+    //   alert("succcess")
+    // })
+    // .catch((error)=>{console.log(error)
+    // alert("error is "+error)
+    // })
+
+    //var axios = require('axios');
+var qs = require('qs');
+var data = qs.stringify({
+  // 'email': 'aayush123@gmail.com',
+  // 'password': 'aayush@123',
+  // 'firstname': 'aayush',
+  // 'lastname': 'bhagat'
+  'email': emaill,
+  'password': confrimpass,
+  'firstname': first,
+  'lastname': last,
+  'DOB':dob,
+  'phone_number':tel
+
+});
+var config = {
+  method: 'post',
+  url: 'https://therecipepool.pythonanywhere.com/account/signup/',
+  headers: { 
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+  alert("success");
+})
+.catch(function (error) {
+  console.log(error);
+  alert("error is : "+error)
+});
+
   }
   return (
     <div>

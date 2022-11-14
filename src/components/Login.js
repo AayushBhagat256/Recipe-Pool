@@ -6,6 +6,8 @@ import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import './Login.css'
+//import axios from 'axios';
+//import axios from 'axios';
 import axios from 'axios';
 
 export default function FullWidthTextField() {
@@ -44,14 +46,69 @@ export default function FullWidthTextField() {
     return (false)
   }
 
+  
+
   // console.log({mail,pass})
   const handleApi=()=>{
-    axios.post('http://therecipepool.pythonanywhere.com/account/login/',{
-      email:mail,
-      password:pass
-    })
-    .then(result=>{console.log(result)})
-    .catch(error=>{console.log(error)})
+    // axios.post('http://therecipepool.pythonanywhere.com/account/login/',{
+    //   "email":mail,
+    //   "password":pass
+    // })
+    // .then(result=>{console.log(result.data)
+    // alert("succcess")
+    // })
+    // .catch(error=>{console.log(error)
+    // alert("error is "+error)
+    // })
+//     var axios = require('axios');
+// var qs = require('qs');
+// var data = qs.stringify({
+//   'email': 'aayush123@gmail.com',
+//   'password': 'aayush@123' 
+// });
+// var config = {
+//   method: 'post',
+//   url: 'http://therecipepool.pythonanywhere.com/account/login/',
+//   headers: { 
+//     'Content-Type': 'application/x-www-form-urlencoded'
+//   },
+//   data : data
+// };
+
+// axios(config)
+// .then(function (response) {
+//   console.log(JSON.stringify(response.data));
+// })
+// .catch(function (error) {
+//   console.log(error);
+// });
+var qs = require('qs');
+var data = qs.stringify({
+  //'email': 'prachip@gmail.com',
+  'email': mail,
+  //'password': 'pass@12345' 
+  'password': pass
+});
+var config = {
+  method: 'post',
+  url: 'https://therecipepool.pythonanywhere.com/account/login/',
+  headers: { 
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data))
+  alert("success");
+})
+.catch(function (error) {
+  console.log(error)
+  alert("error is "+error);
+});
+
+
   }
 
 
