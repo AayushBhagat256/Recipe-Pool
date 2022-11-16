@@ -102,7 +102,12 @@ axios(config)
 .then(function (response) {
   console.log(JSON.stringify(response.data))
   alert("success");
+  console.log("this is api data name is "+response.data.name)
+  localStorage.setItem("name",response.data.name);
 })
+// .then(function (data) {
+//   console.log("this is api data "+data.name)
+// })
 .catch(function (error) {
   console.log(error)
   alert("error is "+error);

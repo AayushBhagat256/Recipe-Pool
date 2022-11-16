@@ -9,6 +9,7 @@ import {
   //Link
 } from "react-router-dom";
 import Register from './components/Register';
+import Tokens from './components/Tokens';
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
       </Routes>
       <Routes>
         <Route path='/register' element={<Register/>}/>
+      </Routes>
+      <Routes>
+        <Route path='/token' element={<Tokens/>}/>
       </Routes>
     </div>
     </Router>
