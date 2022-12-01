@@ -1,0 +1,19 @@
+.mainbody{
+    background-image: linear-gradient( #000000,#414141);
+    height: 100vh;
+    width: 100%;
+    color: white;
+}
+.welcome{
+    text-align: center;
+    height: 20vh;
+    /* background-color: burlywood; */
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    font-size: 2em;
+}
+.card{
+    background: transparent;
+}

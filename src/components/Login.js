@@ -9,6 +9,7 @@ import './Login.css'
 //import axios from 'axios';
 //import axios from 'axios';
 import axios from 'axios';
+import Tokens from './Tokens'
 
 export default function FullWidthTextField() {
   const [mail,setMail]=useState("")
@@ -36,7 +37,8 @@ export default function FullWidthTextField() {
       setError(true)
     }
     else{
-      setSuccess(true)
+      // setSuccess(true)
+      console.log("Form validated successfully")
     }
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
       return (true)
@@ -102,8 +104,11 @@ axios(config)
 .then(function (response) {
   console.log(JSON.stringify(response.data))
   alert("success");
+  setSuccess(true)
   console.log("this is api data name is "+response.data.name)
   localStorage.setItem("name",response.data.name);
+  localStorage.setItem("accessToken",response.data.access)
+  localStorage.setItem("refreshToken",response.data.refresh)
 })
 // .then(function (data) {
 //   console.log("this is api data "+data.name)
@@ -121,7 +126,7 @@ axios(config)
   return (
     <div className='background'>
       <div className="showit">
-        {success?(<h1>you are logged in : </h1>):(
+        {success?(<Tokens/>):(
           <fieldset>
             <legend align='center' id='legend'>Login Page</legend>
           <form onSubmit={validatelogin}>
