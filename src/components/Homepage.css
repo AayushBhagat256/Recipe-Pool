@@ -1,6 +1,6 @@
 .mainbody{
     background-image: linear-gradient( #000000,#414141);
-    height: 100vh;
+    height: auto;
     width: 100%;
     color: white;
 }
@@ -16,4 +16,18 @@
 }
 .card{
     background: transparent;
+    color: white;
+    /* background-color: blue; */
+}
+.des{
+    color: white;
+}
+.like:hover{
+   color: red;
+}
+.share:hover{
+    color: dodgerblue;
+}
+.showmore:hover{
+    color: lawngreen;
 }
