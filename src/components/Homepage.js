@@ -50,9 +50,9 @@ function Homepage() {
     setExpanded(!expanded);
   };
 
-  const settingfun=()=>{
+  const settingfun = () => {
     console.log("setting clicked")
-    
+
 
   }
   return (
@@ -64,24 +64,24 @@ function Homepage() {
           <Grid item xs={6} md={3} >
             <Item >
               <div className="card mx-1">
-                <Card sx={{ maxWidth: 345,bgcolor:grey[900] }}>
-                  <CardHeader sx={{color:'white'}}
+                <Card sx={{ maxWidth: 345, bgcolor: grey[900] }}>
+                  <CardHeader sx={{ color: 'white' }}
                     avatar={
                       <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
 
                       </Avatar>
                     }
                     action={
-                      <IconButton aria-label="settings" sx={{color:'white'}} onClick={settingfun}>
+                      <IconButton aria-label="settings" sx={{ color: 'white' }} onClick={settingfun}>
                         <MoreVertIcon />
                       </IconButton>
                     }
-                    title ="Title here"
-                    subheaderTypographyProps={{ color: 'white' }} 
-                    subheader ="Time Stamp here"
-                    
+                    title="Title here"
+                    subheaderTypographyProps={{ color: 'white' }}
+                    subheader="Time Stamp here"
+
                   />
-                  
+
                   <CardMedia
                     component="img"
                     height="194"
@@ -89,16 +89,16 @@ function Homepage() {
                     alt="Paella dish"
                   />
                   <CardContent>
-                    <Typography variant="body2" color="text.secondary" className='des' sx={{color:'white'}}>
+                    <Typography variant="body2" color="text.secondary" className='des' sx={{ color: 'white' }}>
                       <span className='des'>Description here:</span>
                       <p className='des'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto enim atque excepturi veniam voluptatibus maiores cumque, deserunt obcaecati vero reiciendis quia recusandae impedit repellat officia? Iusto assumenda nulla voluptatum ipsum iste tenetur optio dolorum?</p>
                     </Typography>
                   </CardContent>
                   <CardActions disableSpacing>
-                    <IconButton aria-label="add to favorites" sx={{color:'white'}} className='like'>
+                    <IconButton aria-label="add to favorites" sx={{ color: 'white' }} className='like'>
                       <FavoriteIcon />
                     </IconButton>
-                    <IconButton aria-label="share" sx={{color:'white'}} className='share'>
+                    <IconButton aria-label="share" sx={{ color: 'white' }} className='share'>
                       <ShareIcon />
                     </IconButton>
                     <ExpandMore
@@ -106,7 +106,7 @@ function Homepage() {
                       onClick={handleExpandClick}
                       aria-expanded={expanded}
                       aria-label="show more"
-                      sx={{color:'white'}}
+                      sx={{ color: 'white' }}
                       className='showmore'
                     >
                       <ExpandMoreIcon />
@@ -114,20 +114,20 @@ function Homepage() {
                   </CardActions>
                   <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent>
-                      <Typography paragraph sx={{color:'white'}}>Method:</Typography>
+                      <Typography paragraph sx={{ color: 'white' }}>Method:</Typography>
                       {/* <Typography paragraph>
             Heat 1/2 cup of the broth in a pot until simmering, add saffron and set
             aside for 10 minutes.
           </Typography> */}
-                      <Typography paragraph sx={{color:'white'}}>
+                      <Typography paragraph sx={{ color: 'white' }}>
                         Health label :
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima quo recusandae, labore tenetur quae sint.</p>
                       </Typography>
-                      <Typography paragraph sx={{color:'white'}}>
+                      <Typography paragraph sx={{ color: 'white' }}>
                         Total Nutrients:
                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt, nam odio quia, vel consectetur enim debitis quos explicabo inventore ratione necessitatibus in ea!</p>
                       </Typography>
-                      <Typography sx={{color:'white'}}>
+                      <Typography sx={{ color: 'white' }}>
                         Set aside off of the heat to let rest for 10 minutes, and then serve.
                       </Typography>
                     </CardContent>
