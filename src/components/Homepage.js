@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Homepage.css'
 //import Cards from './Card'
 //import * as React from 'react';
@@ -21,6 +21,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import photo from './21547.jpg'
+import axios from 'axios';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -55,6 +56,42 @@ function Homepage() {
 
 
   }
+  const getData=()=>{
+    //var axios = require('axios');
+var data = JSON.stringify({
+  "meal": [
+    "dinner"
+  ]
+});
+
+var config = {
+  method: 'post',
+  url: 'https://therecipepool.pythonanywhere.com/api/filter-meal/',
+  headers: { 
+    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxODA2MjIwLCJpYXQiOjE2NzE1NDcwMTgsImp0aSI6ImJiNDY3N2ExYmMzMjRiZWY4YWQ5OWEzZWM0MDkxMTdjIiwidXNlcl9pZCI6MTZ9.FF6RXQmB_nCUwn3FUA3fdf2AeHygoTp6e8npZsX4uDE', 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+  console.log(response.data[0])
+  console.log(response.data[0].id)
+  // let k = response.data.length()
+  // console.log(k);
+})
+.catch(function (error) {
+  console.log(error);
+});
+
+  }
+  useEffect(
+    ()=>{
+      getData();
+    },[]
+  )
   return (
     <div className='mainbody'>
       <div className="welcome">Welcome , {username}</div>
