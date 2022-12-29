@@ -25,7 +25,7 @@ import Button from '@mui/material/Button';
 import axios from 'axios';
 import Aos from 'aos';
 import 'aos/dist/aos.css'
-import { Tabs } from '@mui/material';
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -39,7 +39,7 @@ const ExpandMore = styled((props) => {
 }));
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : 'transparent',
   ...theme.typography.body2,
   padding: theme.spacing(0),
   textAlign: 'center',
@@ -140,14 +140,14 @@ axios(config)
         
       </div>
       {/* lets make a grid here */}
-      <Box sx={{ flexGrow: 1 }}>
+      {/* <Box sx={{ flexGrow: 1 }}> */}
         <Grid container spacing={3} >
           {
             entry.map(map=>
-              <Grid data-aos="fade-up" item xs={6} md={3} >
+              <Grid data-aos="fade-up" item xs={12} md={3} >
               <Item >
                 <div className="card mx-1">
-                  <Card sx={{ maxWidth: 345, bgcolor: grey[900] }}>
+                  <Card sx={{ border:"transparent" , bgcolor: grey[900] }}>
                     <CardHeader sx={{ color: 'white' }}
                       avatar={
                         <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -258,7 +258,7 @@ axios(config)
           
           {/* #one more */}
           </Grid>
-      </Box>
+      {/* </Box> */}
 
     </div>
   )

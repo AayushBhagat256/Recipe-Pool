@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Homepage from './Homepage';
+import './Token.css'
 
 function Tokens() {
     let username=localStorage.getItem("name");
@@ -64,7 +65,8 @@ axios(config)
       {home?(<Homepage/>):(
       
         <div className="message">
-          <h1>Redirecting to home page</h1>
+          <img src="https://media.tenor.com/2yQv-RptjeQAAAAC/fastfood.gif" width={500} height={500} />
+          Please wait
         </div>
       )}
       
