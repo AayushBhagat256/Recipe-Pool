@@ -20,8 +20,11 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 //import photo from './21547.jpg'
 import axios from 'axios';
+import Aos from 'aos';
+import 'aos/dist/aos.css'
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -43,7 +46,13 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function Homepage() {
+  useEffect(
+    ()=>{
+      Aos.init({duration:2000});
+    },[]
+  )
   let username = localStorage.getItem("name");
+  let access = localStorage.getItem("accessToken")
   //console.log(username)
   const [expanded, setExpanded] = React.useState(false);
 
@@ -73,7 +82,7 @@ var config = {
   method: 'post',
   url: 'https://therecipepool.pythonanywhere.com/api/filter-meal/',
   headers: { 
-    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxODA2MjIwLCJpYXQiOjE2NzE1NDcwMTgsImp0aSI6ImJiNDY3N2ExYmMzMjRiZWY4YWQ5OWEzZWM0MDkxMTdjIiwidXNlcl9pZCI6MTZ9.FF6RXQmB_nCUwn3FUA3fdf2AeHygoTp6e8npZsX4uDE', 
+    'Authorization': 'Bearer '+access, 
     'Content-Type': 'application/json'
   },
   data : data
@@ -99,33 +108,41 @@ axios(config)
       getData();
     },[]
   )
-//   var i;
-//  const items= [];
-//  function getIngridents(){} ;
-//  var m;
-//   // const getIngridents=()=>{
-//   //   const items= [];
-//   //   for( i=0;i<=map.ingredient_list.length;i++){
-//   //     items.push(<p>{map.ingredient_list[i].name}</p>)
-//   //   }
-//   //   return <p>{items}</p>
-//   // }
-//   const {getIngridents}=()=>{
-                              
-//     for( i=0;i<=map.ingredient_list.length;i++){
-//     items.push(map.ingredient_list[i].name)
-//     }
-//     return <p>{items}</p>
-//   }
+
+let val;
+let val1;
+const clickcheck=()=>{
+  console.log("dinner clicked")
+   val = document.getElementById("dinner").value
+  console.log(val)
+  
+}
+const clickcheck2=()=>{
+  
+  val1 = document.getElementById("break").value
+  console.log(val1)
+}
+const clickcheck1=()=>{
+  
+  val = document.getElementById("meal").value
+  console.log(val)
+}
+
   return (
     <div className='mainbody'>
       <div className="welcome">Welcome , {username}</div>
+      <div className="select">
+        <Button variant="contained" onClick={clickcheck2} value= 'breakfast' id='break' className='mx-1'>BreakFast</Button>
+        <Button variant="contained" onClick={clickcheck1} value= 'meal' id='meal'className='mx-1'>Lunch</Button>
+        <Button variant="contained" onClick={clickcheck} value = 'dinner' id='dinner'className='mx-1'>Dinner</Button>
+        
+      </div>
       {/* lets make a grid here */}
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={3} >
           {
             entry.map(map=>
-              <Grid item xs={6} md={3} >
+              <Grid data-aos="fade-up" item xs={6} md={3} >
               <Item >
                 <div className="card mx-1">
                   <Card sx={{ maxWidth: 345, bgcolor: grey[900] }}>
@@ -153,12 +170,7 @@ axios(config)
                       image={linkurl+map.image}
                       alt="Paella dish"
                     />
-                    <CardContent>
-                      <Typography variant="body2" color="text.secondary" className='des' sx={{ color: 'white' }}>
-                        <span className='des'>Why its healthy ??</span>
-                        <p className='des'>{map.healthLabels}</p>
-                      </Typography>
-                    </CardContent>
+                    
                     <CardActions disableSpacing>
                       <IconButton aria-label="add to favorites" sx={{ color: 'white' }} className='like'>
                         <FavoriteIcon />
@@ -180,10 +192,34 @@ axios(config)
                     <Collapse in={expanded} timeout="auto" unmountOnExit>
                       <CardContent>
                         <Typography paragraph sx={{ color: 'white' }}>Method:</Typography>
-                        {/* <Typography paragraph>
-              Heat 1/2 cup of the broth in a pot until simmering, add saffron and set
-              aside for 10 minutes.
-            </Typography> */}
+                        <Typography sx={{ color: 'white' }}>
+                          {
+                             map.steps_list.map(
+                              map2=>
+                              // <p>{map2.id}</p>
+                              <p>{map2.steps}</p>
+                             )
+                         }
+                        </Typography>
+                        
+                      <Typography variant="body2" color="text.secondary" className='des' sx={{ color: 'white' }}>
+                        <span className='des'>Ingridients:</span>
+                        {
+                          map.ingredient_list.map(
+                            map3=>
+                            <div className="ingri">
+                            <p className='des'>{map3.name}</p>
+                            <p className='des'>Quantity : {map3.quantity}</p>
+                            </div>
+                            
+                          )
+                        }
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary" className='des' paragraph sx={{ color: 'white' }}>
+                        <span className='des'>Why its healthy ??</span>
+                        <p className='des'>{map.healthLabels}</p>
+                      </Typography>
+                    
                         <Typography paragraph sx={{ color: 'white' }}>
                           Health label :
                           
@@ -198,6 +234,9 @@ axios(config)
                           Set aside off of the heat to let rest for 10 minutes, and then serve.
                         </Typography>
                       </CardContent>
+                      <CardContent>
+                      
+                    </CardContent>
                     </Collapse>
                   </Card>
                 </div>
