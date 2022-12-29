@@ -128,7 +128,8 @@ axios(config)
       <div className="showit">
         {success?(<Tokens/>):(
           <fieldset>
-            <legend align='center' id='legend'>Login Page</legend>
+            <legend align='center'className='my-4' id='legend'>Login Page</legend>
+            <br />
           <form onSubmit={validatelogin}>
           <div id="logininfo" >
          <div id="email">
@@ -137,6 +138,7 @@ axios(config)
               id="outlined-basic"
               label="E-mail ID"
               variant="outlined"
+              // sx={{backgroundColor:"white"}}
               //defaultValue="Hello World"
               onChange={handleemail}
               value={mail}

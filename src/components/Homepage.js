@@ -25,6 +25,7 @@ import Button from '@mui/material/Button';
 import axios from 'axios';
 import Aos from 'aos';
 import 'aos/dist/aos.css'
+import { Tabs } from '@mui/material';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -66,15 +67,16 @@ function Homepage() {
 
   }
   const [entry,setEntry]=useState([])
-  useEffect(() => {
-      getData();
-    }, [])
+  const [type,setType]=useState("dinner")
+  // useEffect(() => {
+  //     getData();
+  //   }, [])
     let linkurl = "https://therecipepool.pythonanywhere.com/"
   const getData=()=>{
     //var axios = require('axios');
 var data = JSON.stringify({
   "meal": [
-    "breakfast"
+    type
   ]
 });
 
@@ -106,35 +108,35 @@ axios(config)
   useEffect(
     ()=>{
       getData();
-    },[]
+    },[type]
   )
+  //let type="";
+  const getClick=()=>{
+    let t = document.getElementById('breakfast').value
+    setType("breakfast")
+    
+    console.log(type)
+  }
+  const getClick1=()=>{
+    let t = document.getElementById('lunch').value
+    setType("lunch")
+    console.log(type)
+  }
+  const getClick2=()=>{
+    let t = document.getElementById('dinner').value
+    setType("dinner")
+    console.log(type)
+  }
 
-let val;
-let val1;
-const clickcheck=()=>{
-  console.log("dinner clicked")
-   val = document.getElementById("dinner").value
-  console.log(val)
-  
-}
-const clickcheck2=()=>{
-  
-  val1 = document.getElementById("break").value
-  console.log(val1)
-}
-const clickcheck1=()=>{
-  
-  val = document.getElementById("meal").value
-  console.log(val)
-}
 
   return (
     <div className='mainbody'>
       <div className="welcome">Welcome , {username}</div>
       <div className="select">
-        <Button variant="contained" onClick={clickcheck2} value= 'breakfast' id='break' className='mx-1'>BreakFast</Button>
-        <Button variant="contained" onClick={clickcheck1} value= 'meal' id='meal'className='mx-1'>Lunch</Button>
-        <Button variant="contained" onClick={clickcheck} value = 'dinner' id='dinner'className='mx-1'>Dinner</Button>
+        
+        <Button variant="contained" onClick={getClick} value= 'breakfast' id='breakfast' className='mx-1'>BreakFast</Button>
+        <Button variant="contained" onClick={getClick1} value= 'lunch' id='lunch'className='mx-1'>lunch</Button>
+        <Button variant="contained" onClick={getClick2} value = 'dinner' id='dinner'className='mx-1'>dinner</Button>
         
       </div>
       {/* lets make a grid here */}
