@@ -1,5 +1,11 @@
 .mainbody{
-    background-image: linear-gradient( #000000,#414141);
+    /* background-image: linear-gradient( #000000,#414141); */
+    /* background-image: url("https://img.freepik.com/premium-photo/black-food-cooking-background-stone-texture-with-sea-salt-pepper-garlic-parsley-abstract-food-background-empty-space-text-can-be-used-food-posters-design-menu-top-view_253362-15861.jpg?w=2000"); */
+    background-image: url("https://media.istockphoto.com/id/1165263525/photo/pizza-cooking-ingredients-and-empty-space-for-recipe.jpg?s=170667a&w=0&k=20&c=FspwZF3eO5EbgTHSh2JWKKJItPZaAFNc3xK2FllUt1Y=");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
     height: auto;
     width: 100%;
     color: white;

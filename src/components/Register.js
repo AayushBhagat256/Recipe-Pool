@@ -254,7 +254,7 @@ axios(config)
               {valid&&tel.length<10?(<h4>telephone number must have 10 digits </h4>):("")}
               </div>
               <div id="telerr1">
-              {valid&&tel.length==0?(<h4>Enter tel number </h4>):("")}
+              {valid&&tel.length===0?(<h4>Enter tel number </h4>):("")}
               </div>
               <div id="telerr2">
               {valid&&tel.length>10?(<h4>telephone number cannot exceed 10 digits </h4>):("")}
