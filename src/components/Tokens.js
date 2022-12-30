@@ -11,6 +11,7 @@ function Tokens() {
     let refreshtoken=localStorage.getItem("refreshToken")
     const [show,setShow]=useState([])
     const [home,setHome]=useState(false)
+    const [load,setLoad]=useState(false)
     //API call 
     //API store
     //console.log(localStorage)
@@ -37,11 +38,12 @@ var config = {
 axios(config)
 .then(function (response) {
   console.log(JSON.stringify(response.data));
-  alert("API called successfully")
+  alert(username+" you are logged in successfully")
   setShow(response.data)
   localStorage.setItem("AccessRefreshAPI",response.data.access)
   console.log("the local storage is ..  ")
   console.log(localStorage)
+  setLoad(true)
   setHome(true)
 })
 // .then((showdata)=>{
@@ -53,7 +55,7 @@ axios(config)
 // })
 .catch(function (error) {
   console.log(error);
-  alert("The error is "+error)
+  //alert("The error is "+error)
 });
 
     }
@@ -61,7 +63,8 @@ axios(config)
     console.log(show)
     
   return (
-    <div >
+    <div id='loader'>
+      
       {home?(<Homepage/>):(
       
         <div className="message">

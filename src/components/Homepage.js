@@ -233,7 +233,7 @@ axios(config)
                           <p>{map.totalNutrients}</p>
                         </Typography>
                         <Typography sx={{ color: 'white' }}>
-                          Set aside off of the heat to let rest for 10 minutes, and then serve.
+                          {/* Set aside off of the heat to let rest for 10 minutes, and then serve. */}
                         </Typography>
                       </CardContent>
                       <CardContent>

@@ -103,7 +103,7 @@ var config = {
 axios(config)
 .then(function (response) {
   console.log(JSON.stringify(response.data))
-  alert("success");
+  //alert("success");
   setSuccess(true)
   console.log("this is api data name is "+response.data.name)
   localStorage.setItem("name",response.data.name);
@@ -115,7 +115,7 @@ axios(config)
 // })
 .catch(function (error) {
   console.log(error)
-  alert("error is "+error);
+  alert("Enter correct username and password");
 });
 
 
