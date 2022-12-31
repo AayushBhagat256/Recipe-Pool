@@ -17,7 +17,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import Box from '@mui/material/Box';
+//import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
@@ -56,8 +56,10 @@ function Homepage() {
   let access = localStorage.getItem("accessToken")
   //console.log(username)
   const [expanded, setExpanded] = React.useState(false);
+  //var i 
 
-  const handleExpandClick = () => {
+  const handleExpandClick = (i) => {
+    setExpandedID(expandedID===i?-1:i)
     setExpanded(!expanded);
   };
 
@@ -68,6 +70,7 @@ function Homepage() {
   }
   const [entry,setEntry]=useState([])
   const [type,setType]=useState("dinner")
+  const [expandedID,setExpandedID]=React.useState(-1)
   // useEffect(() => {
   //     getData();
   //   }, [])
@@ -112,21 +115,22 @@ axios(config)
   )
   //let type="";
   const getClick=()=>{
-    let t = document.getElementById('breakfast').value
+    // let t = document.getElementById('breakfast').value
     setType("breakfast")
     
     console.log(type)
   }
   const getClick1=()=>{
-    let t = document.getElementById('lunch').value
+    // let t = document.getElementById('lunch').value
     setType("lunch")
     console.log(type)
   }
   const getClick2=()=>{
-    let t = document.getElementById('dinner').value
+    // let t = document.getElementById('dinner').value
     setType("dinner")
     console.log(type)
   }
+  
 
 
   return (
@@ -143,7 +147,8 @@ axios(config)
       {/* <Box sx={{ flexGrow: 1 }}> */}
         <Grid container spacing={3} >
           {
-            entry.map(map=>
+            entry.map((map,i)=>
+              
               <Grid data-aos="fade-up" item xs={12} md={3} >
               <Item >
                 <div className="card mx-1">
@@ -174,16 +179,18 @@ axios(config)
                     />
                     
                     <CardActions disableSpacing>
-                      <IconButton aria-label="add to favorites" sx={{ color: 'white' }} className='like'>
-                        <FavoriteIcon />
+                      <IconButton aria-label="add to favorites" sx={{ color: 'white' }} className='like' id='likeBtn' >
+                        <FavoriteIcon   />
                       </IconButton>
                       <IconButton aria-label="share" sx={{ color: 'white' }} className='share'>
                         <ShareIcon />
                       </IconButton>
                       <ExpandMore
                         expand={expanded}
-                        onClick={handleExpandClick}
-                        aria-expanded={expanded}
+                        // onClick={handleExpandClick}
+                        // aria-expanded={expanded}
+                        onClick={()=>handleExpandClick(i)}
+                        aria-expanded={expandedID===i}
                         aria-label="show more"
                         sx={{ color: 'white' }}
                         className='showmore'
@@ -191,7 +198,8 @@ axios(config)
                         <ExpandMoreIcon />
                       </ExpandMore>
                     </CardActions>
-                    <Collapse in={expanded} timeout="auto" unmountOnExit>
+                    {/* <Collapse in={expanded} timeout="auto" unmountOnExit> */}
+                    <Collapse in={expandedID===i} timeout="auto" unmountOnExit>
                       <CardContent>
                         <Typography paragraph sx={{ color: 'white' }}>Method:</Typography>
                         <Typography sx={{ color: 'white' }}>
@@ -234,6 +242,7 @@ axios(config)
                         </Typography>
                         <Typography sx={{ color: 'white' }}>
                           {/* Set aside off of the heat to let rest for 10 minutes, and then serve. */}
+                          {/* {i=map.id} */}
                         </Typography>
                       </CardContent>
                       <CardContent>
