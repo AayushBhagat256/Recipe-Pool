@@ -48,4 +48,17 @@
 .showmore:hover{
     color: lawngreen;
 }
-
+.king1:hover{
+    /* background-color: red; */
+    color: yellow;
+}
+/* .searchbar{
+    width: 100vw;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    /* background-color: aqua; */
+/* } */
+/* .form-control{
+    width: 40vw;
+/* } */  
