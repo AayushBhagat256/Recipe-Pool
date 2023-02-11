@@ -160,7 +160,7 @@ var config = {
 axios(config)
 .then(function (response) {
   console.log(JSON.stringify(response.data));
-  alert("success");
+  alert("You are registered successfully now login to proceed");
 })
 .catch(function (error) {
   console.log(error);

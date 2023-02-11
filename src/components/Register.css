@@ -14,7 +14,13 @@
     color: red;
 }
 #registerinfo{
-    background-color: rgb(130, 133, 228);
+    /* background-color: rgb(130, 133, 228); */
+    background-image: url("loginbg.jpg");
+background-repeat: no-repeat;
+background-position: center;
+background-attachment: fixed;
+background-size: cover;
+    height: 100vh;
 }
 #err1{
     color: red;
